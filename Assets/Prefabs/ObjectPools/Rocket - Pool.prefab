@@ -75,12 +75,31 @@ PrefabInstance:
     - target: {fileID: 8710548547237504865, guid: b2ffc23ade06d6349beff4beade25ecb,
         type: 3}
       propertyPath: m_Name
-      value: Rocket
+      value: Rocket - Pool
       objectReference: {fileID: 0}
     - target: {fileID: 8710548547237504865, guid: b2ffc23ade06d6349beff4beade25ecb,
         type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3983289256437406145, guid: b2ffc23ade06d6349beff4beade25ecb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b2ffc23ade06d6349beff4beade25ecb, type: 3}
+--- !u!1 &5693213019568828445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8710548547237504865, guid: b2ffc23ade06d6349beff4beade25ecb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4026304735465543548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2530021683858534977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693213019568828445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab084374d3ec0e45b03c76282a8ec38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
