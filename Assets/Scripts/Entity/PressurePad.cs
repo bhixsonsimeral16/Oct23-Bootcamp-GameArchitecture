@@ -14,18 +14,42 @@ public class PressurePad : MonoBehaviour
     bool isActivated = false;
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Pressure Pad Collision Enter");
         // Is cube close to center of pressure pad?
         Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, holdableLayerMask);
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.CompareTag("PickupCube"))
+            if (collider.CompareTag("PickupCube"))
             {
+                Debug.Log("Cube placed on pressure pad");
                 isActivated = true;
                 OnCubePlaced.Invoke();
                 break;
             }
         }
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (!other.gameObject.CompareTag("PickupCube")) return;
+
+        // Is cube close to center of pressure pad?
+        Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, holdableLayerMask);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("PickupCube"))
+            {
+                if (!isActivated)
+                {
+                    Debug.Log("Cube shifted onto pressure pad");
+                    OnCubePlaced.Invoke();
+                }
+                isActivated = true;
+                return;
+            }
+        }
+
+        Debug.Log("Cube shifted, but is not on pressure pad");
+        OnCubeRemoved.Invoke();
     }
 
     void OnCollisionExit(Collision other)
@@ -43,13 +67,20 @@ public class PressurePad : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, holdableLayerMask);
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.CompareTag("PickupCube"))
+            if (collider.CompareTag("PickupCube"))
             {
+                Debug.Log("Cube is still on pressure pad");
                 isActivated = true;
                 return;
             }
         }
 
         OnCubeRemoved.Invoke();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
 }

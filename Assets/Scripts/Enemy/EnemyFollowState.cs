@@ -4,7 +4,7 @@ public class EnemyFollowState : EnemyState
 {
     float distanceToPlayer;
     float followDistance = 13f;
-    float attackDistance = 2f;
+    float attackDistance = 3f;
 
     public EnemyFollowState(EnemyController enemy) : base(enemy)
     {

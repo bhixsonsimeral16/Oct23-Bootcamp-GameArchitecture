@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShootInteractor : Interactor
 {
-    [SerializeField] private Input inputType;
-    // [SerializeField] private Rigidbody projectilePrefab;
-
     [Header("Gun")]
     public MeshRenderer gunMeshRenderer;
     public Color bulletColor;
@@ -22,38 +19,43 @@ public class ShootInteractor : Interactor
     [SerializeField] private PlayerMovement playerMovement;
 
     private float finalShootVelocity;
-
-    public enum Input
-    {
-        LeftClick,
-        RightClick
-    }
+    private IShootStrategy currentShootStrategy;
 
     public override void Interact()
     {
-        if ((inputType == Input.LeftClick && playerInput.primaryShootPressed) ||
-            (inputType == Input.RightClick && playerInput.secondaryShootPressed))
+        currentShootStrategy ??= new BulletShootStrategy(this);
+
+        if(playerInput.weapon1Pressed)
         {
-            Shoot();
+            currentShootStrategy = new BulletShootStrategy(this);
+        }
+        else if(playerInput.weapon2Pressed)
+        {
+            currentShootStrategy = new RocketShootStrategy(this);
+        }
+
+        if(playerInput.primaryShootPressed && currentShootStrategy != null)
+        {
+            currentShootStrategy.Shoot();
         }
     }
 
-    void Shoot()
-    {
-        // finalShootVelocity = playerMovement.GetForwardVelocity() + shootForce;
+    // void Shoot()
+    // {
+    //     // finalShootVelocity = playerMovement.GetForwardVelocity() + shootForce;
 
-        // PooledObject pooledProjectile = projectilePool.GetPooledObject();
-        // // pooledProjectile.gameObject.SetActive(true);
+    //     // PooledObject pooledProjectile = projectilePool.GetPooledObject();
+    //     // // pooledProjectile.gameObject.SetActive(true);
         
-        // // Rigidbody projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-        // Rigidbody projectile = pooledProjectile.GetComponent<Rigidbody>();
-        // projectile.transform.position = projectileSpawnPoint.position;
-        // projectile.transform.rotation = projectileSpawnPoint.rotation;
+    //     // // Rigidbody projectileInstance = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+    //     // Rigidbody projectile = pooledProjectile.GetComponent<Rigidbody>();
+    //     // projectile.transform.position = projectileSpawnPoint.position;
+    //     // projectile.transform.rotation = projectileSpawnPoint.rotation;
 
-        // projectile.velocity = projectileSpawnPoint.forward * finalShootVelocity;
-        // // Destroy(projectile.gameObject, 5f);
-        // projectilePool.DestroyPooledObject(pooledProjectile, 5f);
-    }
+    //     // projectile.velocity = projectileSpawnPoint.forward * finalShootVelocity;
+    //     // // Destroy(projectile.gameObject, 5f);
+    //     // projectilePool.DestroyPooledObject(pooledProjectile, 5f);
+    // }
 
     #region Getters and Setters
     public Transform GetProjectileSpawnPoint()

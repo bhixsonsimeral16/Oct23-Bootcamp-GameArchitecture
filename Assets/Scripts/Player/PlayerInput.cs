@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour
     public bool interactPressed { get; private set; }
     public bool primaryShootPressed { get; private set; }
     public bool secondaryShootPressed { get; private set; }
+    public bool weapon1Pressed { get; private set; }
+    public bool weapon2Pressed { get; private set; }
+    public bool commandPressed { get; private set; }
     private bool clear;
 
     #region Singleton
@@ -65,6 +68,9 @@ public class PlayerInput : MonoBehaviour
         interactPressed = interactPressed || Input.GetKeyDown(KeyCode.E);
         primaryShootPressed = primaryShootPressed || Input.GetButtonDown("Fire1");
         secondaryShootPressed = secondaryShootPressed || Input.GetButtonDown("Fire2");
+        weapon1Pressed = weapon1Pressed || Input.GetKeyDown(KeyCode.Alpha1);
+        weapon2Pressed = weapon2Pressed || Input.GetKeyDown(KeyCode.Alpha2);
+        commandPressed = commandPressed || Input.GetKeyDown(KeyCode.Q);
     }
 
     void ClearInput()
@@ -82,5 +88,8 @@ public class PlayerInput : MonoBehaviour
         interactPressed = false;
         primaryShootPressed = false;
         secondaryShootPressed = false;
+        weapon1Pressed = false;
+        weapon2Pressed = false;
+        commandPressed = false;
     }
 }
