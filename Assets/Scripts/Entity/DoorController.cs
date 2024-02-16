@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    // [SerializeField] private MeshRenderer doorRenderer;
-    // [SerializeField] private Material defaultMaterial;
-    // [SerializeField] private Material triggeredMaterial;
     [SerializeField] private Animator doorAnimator;
     
     bool isLocked = true;
@@ -22,7 +19,6 @@ public class DoorController : MonoBehaviour
         }
 
         timer = 0f;
-        // doorRenderer.material = triggeredMaterial;
     }
 
     void OnTriggerStay(Collider other)
@@ -38,7 +34,6 @@ public class DoorController : MonoBehaviour
             timer = WAIT_TIME;
 
             // Open the door
-            // doorAnimator.SetBool(DOOR_PARAM, true);
             OpenDoor(true);
         }
     }
@@ -52,10 +47,8 @@ public class DoorController : MonoBehaviour
 
         Debug.Log("Player exited door trigger");
         timer = 0f;
-        // doorRenderer.material = defaultMaterial;
 
         // Close the door
-        // doorAnimator.SetBool(DOOR_PARAM, false);
         OpenDoor(false);
     }
 
