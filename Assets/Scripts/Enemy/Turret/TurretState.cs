@@ -1,4 +1,4 @@
-public class TurretState
+public abstract class TurretState
 {
     protected TurretController turret;
 
@@ -7,7 +7,7 @@ public class TurretState
         this.turret = turret;
     }
 
-    public virtual void OnStateEnter() { }
-    public virtual void OnStateUpdate() { }
-    public virtual void OnStateExit() { }
+    public abstract void OnStateEnter();
+    public abstract void OnStateUpdate();
+    public abstract void OnStateExit();
 }
