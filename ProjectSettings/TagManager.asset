@@ -7,6 +7,8 @@ TagManager:
   - PickupCube
   - Ground
   - Builder
+  - PickCube
+  - Activator
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - RocketDestroyable
   - Selectable
   - Holdable
-  - 
+  - Robot
   - 
   - 
   - 

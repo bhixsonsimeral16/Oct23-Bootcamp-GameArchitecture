@@ -20,6 +20,11 @@ public class BuildCommand : Command
         agent.SetDestination(builder.transform.position);
     }
 
+    public override void ClearCommand()
+    {
+        agent.ResetPath();
+    }
+
     bool BuildComplete()
     {
         if(agent.remainingDistance > 0.1f)

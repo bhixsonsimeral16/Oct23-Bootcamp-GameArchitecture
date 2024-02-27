@@ -8,7 +8,7 @@ public class DoorController : MonoBehaviour
     
     bool isLocked = true;
     float timer = 0f;
-    const float WAIT_TIME = 1.0f;
+    const float WAIT_TIME = 0.5f;
     const string DOOR_PARAM = "Door";
     
     void OnTriggerEnter(Collider other)

@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelManager[] levels;
+    public bool skipBriefing;
 
     private GameState currentState;
     private LevelManager currentLevel;
@@ -37,7 +38,16 @@ public class GameManager : MonoBehaviour
     {
         if(levels.Length > 0)
         {
-            ChangeState(GameState.Briefing, levels[0]);
+            if(skipBriefing && levels.Length > 1)
+            {
+                currentLevelIndex = 1;
+                ChangeState(GameState.LevelStart, levels[1]);
+            }
+            else
+            {
+                ChangeState(GameState.Briefing, levels[0]);
+            }
+            
         }
     }
 

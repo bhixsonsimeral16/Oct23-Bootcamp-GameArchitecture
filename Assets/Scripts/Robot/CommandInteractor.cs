@@ -16,7 +16,7 @@ public class CommandInteractor : Interactor
 
     public override void Interact()
     {
-        if(playerInput.commandPressed)
+        if(playerInput.commandPressed && agent != null)
         {
             Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 
@@ -44,6 +44,22 @@ public class CommandInteractor : Interactor
         ProcessCommand();
     }
 
+    public void ClearCommands()
+    {
+        if (commands.Count > 0)
+        {
+            currentCommand.ClearCommand();
+            while(commands.Count > 0)
+            {
+                if(currentCommand is MoveCommand)
+                {
+                    Destroy(pointers.Dequeue());
+                }
+                commands.Dequeue();
+            }
+        }
+    }
+
     void ProcessCommand()
     {
         if((currentCommand != null && !currentCommand.isComplete) || commands.Count == 0)
@@ -57,5 +73,15 @@ public class CommandInteractor : Interactor
 
         currentCommand = commands.Dequeue();
         currentCommand.Execute();
+    }
+
+    public void SetAgent(NavMeshAgent agent)
+    {
+        this.agent = agent;
+    }
+
+    public void ClearAgent()
+    {
+        agent = null;
     }
 }

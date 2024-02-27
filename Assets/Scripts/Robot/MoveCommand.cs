@@ -20,6 +20,11 @@ public class MoveCommand : Command
         agent.SetDestination(destination);
     }
 
+    public override void ClearCommand()
+    {
+        agent.ResetPath();
+    }
+
     bool ReachedDestination()
     {
         if(agent.remainingDistance > 0.1f)
