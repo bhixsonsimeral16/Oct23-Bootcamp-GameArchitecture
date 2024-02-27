@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7325641525603070498}
   - component: {fileID: 44482258210952338}
-  - component: {fileID: 6399828143707161746}
   - component: {fileID: 4922276722061362247}
+  - component: {fileID: 6399828143707161746}
   m_Layer: 0
   m_Name: Pressure Pad
   m_TagString: Untagged
@@ -48,6 +48,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0092773, y: 0.13397436, z: 2.0109138}
   m_Center: {x: 0, y: -0.006511472, z: -0.002286911}
+--- !u!65 &4922276722061362247
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7325641525603070499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.5, z: 2}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &6399828143707161746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,19 +84,6 @@ MonoBehaviour:
   OnCubeRemoved:
     m_PersistentCalls:
       m_Calls: []
---- !u!65 &4922276722061362247
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7325641525603070499}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.5, z: 2}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &9110447686929301871
 GameObject:
   m_ObjectHideFlags: 0

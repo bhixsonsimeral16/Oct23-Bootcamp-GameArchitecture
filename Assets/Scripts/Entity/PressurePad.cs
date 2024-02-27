@@ -22,7 +22,7 @@ public class PressurePad : MonoBehaviour
         {
             if (collider.CompareTag(activatorTag))
             {
-                Debug.Log("Cube placed on pressure pad");
+                Debug.Log("Activator placed on pressure pad");
                 isActivated = true;
                 OnCubePlaced.Invoke();
                 break;
@@ -42,27 +42,19 @@ public class PressurePad : MonoBehaviour
             {
                 if (!isActivated)
                 {
-                    Debug.Log("Cube shifted onto pressure pad");
+                    Debug.Log("Activator shifted onto pressure pad");
                     OnCubePlaced.Invoke();
                 }
                 isActivated = true;
                 return;
             }
         }
-
-        Debug.Log("Cube shifted, but is not on pressure pad");
         OnCubeRemoved.Invoke();
     }
 
     void OnTriggerExit(Collider other)
     {
-        // Following code only works if there is only ever one PickupCube in the scene
-        // if (other.gameObject.CompareTag(activatorType))
-        // {
-        //     OnCubeRemoved.Invoke();
-        // }
-
-        // Return is not active or the object is not a cube
+        // Return if not active or the object is not a cube
         if (!isActivated || !other.gameObject.CompareTag(activatorTag)) return;
 
         isActivated = false;
@@ -71,7 +63,7 @@ public class PressurePad : MonoBehaviour
         {
             if (collider.CompareTag(activatorTag))
             {
-                Debug.Log("Cube is still on pressure pad");
+                Debug.Log("Activator is still on pressure pad");
                 isActivated = true;
                 return;
             }

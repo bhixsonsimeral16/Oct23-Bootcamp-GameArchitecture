@@ -17,6 +17,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] public float visionSphereRadius = 1f;
 
     TurretState currentState;
+    bool isEnabled = true;
 
     [HideInInspector] public Transform player;
 
@@ -28,6 +29,12 @@ public class TurretController : MonoBehaviour
 
     void Update()
     {
+        if (!isEnabled)
+        {
+            laser.enabled = false;
+            return;
+        }
+        laser.enabled = true;
         laser.SetPosition(0, laser.transform.position);
         currentState.OnStateUpdate();
     }
@@ -37,6 +44,16 @@ public class TurretController : MonoBehaviour
         currentState.OnStateExit();
         currentState = state;
         currentState.OnStateEnter();
+    }
+
+    public void Enable()
+    {
+        isEnabled = true;
+    }
+
+    public void Disable()
+    {
+        isEnabled = false;
     }
 
     private void OnDrawGizmos() 
