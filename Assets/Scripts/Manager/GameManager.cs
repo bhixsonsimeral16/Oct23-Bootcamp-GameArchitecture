@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private LevelManager[] levels;
+    [SerializeField] private GameObject endingCutscene;
     public bool skipBriefing;
 
     private GameState currentState;
@@ -115,5 +116,6 @@ public class GameManager : MonoBehaviour
     private void GameComplete()
     {
         Debug.Log("Game Complete, we won!");
+        endingCutscene.SetActive(true);
     }
 }

@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private float moveMultiplier = 1f;
     public bool isGrounded { get; private set; }
+    public bool isGameOver { get; set; }
 
     void Start()
     {
@@ -29,7 +30,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerGrounded();
-        MovePlayer();
+        if(!isGameOver)
+        {
+            MovePlayer();
+        }
+        if(isGameOver && playerInput.quitPressed)
+        {
+            Application.Quit();
+        }
     }
 
     void MovePlayer()

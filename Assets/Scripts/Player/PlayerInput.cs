@@ -19,6 +19,7 @@ public class PlayerInput : MonoBehaviour
     public bool weapon1Pressed { get; private set; }
     public bool weapon2Pressed { get; private set; }
     public bool commandPressed { get; private set; }
+    public bool quitPressed { get; private set; }
     private bool clear;
 
     #region Singleton
@@ -71,6 +72,7 @@ public class PlayerInput : MonoBehaviour
         weapon1Pressed = weapon1Pressed || Input.GetKeyDown(KeyCode.Alpha1);
         weapon2Pressed = weapon2Pressed || Input.GetKeyDown(KeyCode.Alpha2);
         commandPressed = commandPressed || Input.GetKeyDown(KeyCode.Q);
+        quitPressed = quitPressed || Input.GetKeyDown(KeyCode.Escape);
     }
 
     void ClearInput()
@@ -91,5 +93,6 @@ public class PlayerInput : MonoBehaviour
         weapon1Pressed = false;
         weapon2Pressed = false;
         commandPressed = false;
+        quitPressed = false;
     }
 }
