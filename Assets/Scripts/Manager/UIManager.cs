@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] Health playerHealth;
     public TMP_Text healthText;
-    public GameObject gameOverText;
+    public GameObject gameOverCutscene;
 
     void OnEnable()
     {
@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-         gameOverText.SetActive(false);
+         gameOverCutscene.SetActive(false);
     }
 
     void OnHealthUpdate(float health)
@@ -34,6 +34,6 @@ public class UIManager : MonoBehaviour
 
     void OnDeath()
     {
-        gameOverText.SetActive(true);
+        gameOverCutscene.SetActive(true);
     }
 }
