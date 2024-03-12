@@ -2623,7 +2623,7 @@ MonoBehaviour:
   - {fileID: 592404809}
   - {fileID: 650886946}
   endingCutscene: {fileID: 127407080}
-  skipBriefing: 1
+  skipBriefing: 0
 --- !u!1001 &217693572
 PrefabInstance:
   m_ObjectHideFlags: 0
